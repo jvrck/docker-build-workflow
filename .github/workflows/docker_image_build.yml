@@ -5,7 +5,7 @@ on:
       tag:
         description: 'Tag'     
         required: true
-        default: 'latest' 
+        default: 'tag' 
 
 jobs:
   build:
