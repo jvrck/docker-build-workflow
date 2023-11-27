@@ -37,5 +37,5 @@ jobs:
         context: .
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/build-example:${{ github.event.inputs.tag }}
-          ghcr.io/${{ github.repository_owner }}/build-example:${{ github.event.inputs.tag }}
+          jvrck/build-example:${{ github.event.inputs.tag }}
+          ghcr.io/jvrck/build-example:${{ github.event.inputs.tag }}
