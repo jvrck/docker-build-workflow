@@ -1,0 +1,17 @@
+on:
+    push:
+      branches:
+        - '*test*'
+  
+name: dev_workflow
+  
+jobs:
+  call-workflow:
+    uses: ./.github/workflows/rw_docker_build.yml@test-branch-builds
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    with:
+      push: true
+      tag: 'latest'
