@@ -15,5 +15,5 @@ jobs:
     with:
       push: true
       tag: |
-        jvrck/build-example:reuse1
-        ghcr.io/jvrck/build-example:reuse1
+        jvrck/build-example:rw-opt-args
+        ghcr.io/jvrck/build-example:rw-opt-args
