@@ -16,6 +16,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Validate push input
+      run: |
+        if [[ "${{ github.event.inputs.push }}" != "true" && "${{ github.event.inputs.push }}" != "false" ]]; then
+          echo "Invalid value for push input. It must be either 'true' or 'false'."
+          exit 1
+        fi
+
     - name: Checkout code
       uses: actions/checkout@v2
 
