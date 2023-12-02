@@ -47,3 +47,19 @@ jobs:
       tag: |
         jvrck/build-example:plat-${{ github.run_number }}
         ghcr.io/jvrck/build-example:plat-${{ github.run_number }}
+  
+  test-context:
+    uses: ./.github/workflows/rw_docker_build.yml
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    with:
+      file: args.Dockerfile
+      build_args: RUN_NUMBER=${{ github.run_number }}, BRANCH_NAME=${{ github.ref }}
+      push: true
+      platforms: linux/amd64,linux/arm64
+      context: ./context-test
+      tag: |
+        jvrck/build-example:plat-${{ github.run_number }}
+        ghcr.io/jvrck/build-example:plat-${{ github.run_number }}
