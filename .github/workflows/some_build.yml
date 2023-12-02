@@ -58,8 +58,8 @@ jobs:
       file: args.Dockerfile
       build_args: RUN_NUMBER=${{ github.run_number }}, BRANCH_NAME=${{ github.ref }}
       push: true
-      platforms: linux/amd64,linux/arm64
+      platforms: linux/amd64
       context: ./context-test
       tag: |
-        jvrck/build-example:plat-${{ github.run_number }}
-        ghcr.io/jvrck/build-example:plat-${{ github.run_number }}
+        jvrck/build-example:context-${{ github.run_number }}
+        ghcr.io/jvrck/build-example:context-${{ github.run_number }}
