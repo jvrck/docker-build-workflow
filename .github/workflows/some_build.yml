@@ -55,7 +55,7 @@ jobs:
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
     with:
-      file: args.Dockerfile
+      file: ./context-test/python.Dockerfile
       build_args: RUN_NUMBER=${{ github.run_number }}, BRANCH_NAME=${{ github.ref }}
       push: true
       platforms: linux/amd64
