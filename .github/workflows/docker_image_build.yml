@@ -39,7 +39,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        push: true
+        push: ${{ github.event.inputs.push }}
         tags: |
           jvrck/build-example:${{ github.event.inputs.tag }}
           ghcr.io/jvrck/build-example:${{ github.event.inputs.tag }}
