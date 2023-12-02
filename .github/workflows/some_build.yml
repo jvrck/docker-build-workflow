@@ -14,4 +14,6 @@ jobs:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
     with:
       push: true
-      tag: 'latest'
+      tag: |
+        jvrck/build-example:reuse1
+        ghcr.io/jvrck/build-example:reuse1
