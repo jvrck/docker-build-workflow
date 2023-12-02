@@ -15,5 +15,5 @@ jobs:
     with:
       push: true
       tag: |
-        jvrck/build-example:rw-opt-args
-        ghcr.io/jvrck/build-example:rw-opt-args
+        jvrck/build-example:dev-${{ github.run_number }}
+        ghcr.io/jvrck/build-example:dev-${{ github.run_number }}
