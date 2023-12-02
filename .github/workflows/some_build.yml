@@ -1,0 +1,19 @@
+on:
+    push:
+      branches:
+        - '*test*'
+  
+name: dev_workflow
+  
+jobs:
+  call-workflow:
+    uses: ./.github/workflows/rw_docker_build.yml
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    with:
+      push: true
+      tag: |
+        jvrck/build-example:reuse1
+        ghcr.io/jvrck/build-example:reuse1
