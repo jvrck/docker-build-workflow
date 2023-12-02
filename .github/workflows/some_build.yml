@@ -27,6 +27,7 @@ jobs:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
     with:
       file: args.Dockerfile
+      build_args: RUN_NUMBER=${{ github.run_number }}, BRANCH_NAME=${{ github.ref }}
       push: true
       tag: |
         jvrck/build-example:dfile-${{ github.run_number }}
