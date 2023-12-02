@@ -17,3 +17,17 @@ jobs:
       tag: |
         jvrck/build-example:dev-${{ github.run_number }}
         ghcr.io/jvrck/build-example:dev-${{ github.run_number }}
+
+
+  test-dockerfile:
+    uses: ./.github/workflows/rw_docker_build.yml
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    with:
+      file: args.Dockerfile
+      push: true
+      tag: |
+        jvrck/build-example:dfile-${{ github.run_number }}
+        ghcr.io/jvrck/build-example:dfile-${{ github.run_number }}
