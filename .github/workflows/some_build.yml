@@ -59,7 +59,7 @@ jobs:
       build_args: RUN_NUMBER=${{ github.run_number }}, BRANCH_NAME=${{ github.ref }}
       push: true
       platforms: linux/amd64
-      context: ./context-test/
+      context: ./context-test/.
       tag: |
         jvrck/build-example:context-${{ github.run_number }}
         ghcr.io/jvrck/build-example:context-${{ github.run_number }}
