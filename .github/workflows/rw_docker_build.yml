@@ -45,6 +45,7 @@ jobs:
         - name: Login to DockerHub
           uses: docker/login-action@master
           with:
+            registry: docker.io
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}
     
