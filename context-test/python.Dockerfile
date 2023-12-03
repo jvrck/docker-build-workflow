@@ -8,4 +8,4 @@ ENV BRANCH_NAME=${BRANCH_NAME}
 
 WORKDIR /app
 
-COPY *.txt /app/
+COPY some-text-file.txt /app/
