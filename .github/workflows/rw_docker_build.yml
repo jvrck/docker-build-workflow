@@ -58,7 +58,7 @@ jobs:
         - name: Build and push Docker images
           uses: docker/build-push-action@master
           with:
-            context: .
+            context: ${{ inputs.context }}
             platforms: ${{ inputs.platforms }}
             build-args: ${{ inputs.build_args }}
             file: ${{ inputs.file }}
