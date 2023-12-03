@@ -7,6 +7,22 @@ on:
             push:
                 required: true
                 type: boolean
+            context:
+                required: false
+                type: string
+                default: .
+            build_args:
+                required: false
+                type: string
+            platforms:
+                required: false
+                type: string
+                default: linux/amd64,linux/arm64,linux/arm/v7
+            file:
+                required: false
+                type: string
+                default: Dockerfile
+            
         secrets:
             DOCKER_USERNAME:
                 required: true
@@ -43,5 +59,8 @@ jobs:
           uses: docker/build-push-action@master
           with:
             context: .
+            platforms: ${{ inputs.platforms }}
+            build-args: ${{ inputs.build_args }}
+            file: ${{ inputs.file }}
             push: ${{ inputs.push }}
             tags: ${{ inputs.tag }}

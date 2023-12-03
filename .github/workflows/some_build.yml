@@ -15,5 +15,51 @@ jobs:
     with:
       push: true
       tag: |
-        jvrck/build-example:reuse1
-        ghcr.io/jvrck/build-example:reuse1
+        jvrck/build-example:dev-${{ github.run_number }}
+        ghcr.io/jvrck/build-example:dev-${{ github.run_number }}
+
+
+  test-dockerfile:
+    uses: ./.github/workflows/rw_docker_build.yml
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    with:
+      file: args.Dockerfile
+      build_args: RUN_NUMBER=${{ github.run_number }}, BRANCH_NAME=${{ github.ref }}
+      push: true
+      tag: |
+        jvrck/build-example:dfile-${{ github.run_number }}
+        ghcr.io/jvrck/build-example:dfile-${{ github.run_number }}
+
+  test-platform:
+    uses: ./.github/workflows/rw_docker_build.yml
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    with:
+      file: args.Dockerfile
+      build_args: RUN_NUMBER=${{ github.run_number }}, BRANCH_NAME=${{ github.ref }}
+      push: true
+      platforms: linux/amd64,linux/arm64
+      tag: |
+        jvrck/build-example:plat-${{ github.run_number }}
+        ghcr.io/jvrck/build-example:plat-${{ github.run_number }}
+  
+  test-context:
+    uses: ./.github/workflows/rw_docker_build.yml
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    with:
+      file: ./context-test/python.Dockerfile
+      build_args: RUN_NUMBER=${{ github.run_number }}, BRANCH_NAME=${{ github.ref }}
+      push: true
+      platforms: linux/amd64
+      context: ./context-test/.
+      tag: |
+        jvrck/build-example:context-${{ github.run_number }}
+        ghcr.io/jvrck/build-example:context-${{ github.run_number }}
