@@ -7,7 +7,7 @@ name: dev_workflow
   
 jobs:
   call-workflow:
-    uses: jvrck/workflows/docker-build.yml@initial
+    uses: jvrck/workflows/.github/workflows/docker-build.yml@initial
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
