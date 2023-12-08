@@ -5,7 +5,7 @@ jobs:
   
   get-latest-release:
     name: Get latest release
-    uses: ./.github/workflows/rw_get_latest_release.yml
+    uses: ./.github/workflows/rw_get_latest_release.yml@test-release
     secrets:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
         
