@@ -2,18 +2,15 @@ name: Use latest release tag
 on: [push]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Get latest release
-        id: latest_release
-        uses: ./.github/workflows/s/rw_get_latest_release.yml
-        # secrets:
-        #   GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  
+  get-latest-release:
+    name: Get latest release
+    uses: ./.github/workflows/rw_docker_build.yml
+    secrets:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
         
-      - name: Use latest release tag
-        run: echo "Latest release tag is ${{ steps.latest_release.outputs.latest_release_tag }}"
+      # - name: Use latest release tag
+      #   run: echo "Latest release tag is ${{ steps.latest_release.outputs.latest_release_tag }}"
 
 
 #    ./.github/workflows/s/rw_get_latest_release.yml
