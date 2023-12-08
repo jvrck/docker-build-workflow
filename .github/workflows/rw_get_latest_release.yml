@@ -1,0 +1,25 @@
+on:
+    workflow_call:
+      secrets:
+        GH_TOKEN:
+          required: true
+  
+  jobs:
+    get_latest_release:
+      runs-on: ubuntu-latest
+      steps:
+        # - name: Checkout code
+        #   uses: actions/checkout@master
+  
+        - name: Get latest release
+          id: latest_release
+          run: |
+            LATEST_RELEASE_TAG=$(curl --silent "https://api.github.com/repos/${{ github.repository }}/releases/latest" -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" | jq -r .tag_name)
+            echo "LATEST_RELEASE_TAG=$LATEST_RELEASE_TAG" >> $GITHUB_ENV
+  
+        - name: Set output
+          id: output
+          run: echo "::set-output name=latest_release_tag::$LATEST_RELEASE_TAG"
+  
+      outputs:
+        latest_release_tag: ${{ steps.output.outputs.latest_release_tag }}
