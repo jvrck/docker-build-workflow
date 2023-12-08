@@ -1,17 +1,17 @@
 on:
     push:
       branches:
-        - "*"
+        - '*'
   
-  jobs:
-    call_workflow:
-      runs-on: ubuntu-latest
-      steps:
+jobs:
+  call_workflow:
+    runs-on: ubuntu-latest
+    steps:
         - name: Call reusable workflow
-          id: call_workflow
-          uses: ./.github/workflows/rw_get_latest_release.yml
-          with:
-            GH_TOKEN: ${{ secrets.GH_TOKEN }}
-  
+            id: call_workflow
+            uses: ./.github/workflows/rw_get_latest_release.yml
+            with:
+                GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
         - name: Get output
-          run: echo "The latest release tag is ${{ steps.call_workflow.outputs.latest_release_tag }}"
+            run: echo "The latest release tag is ${{ steps.call_workflow.outputs.latest_release_tag }}"
