@@ -1,16 +1,13 @@
 on:
-    workflow_call:
+  workflow_call:
       secrets:
-        GH_TOKEN:
-          required: true
+          GH_TOKEN:
+              required: true
   
-  jobs:
+jobs:
     get_latest_release:
       runs-on: ubuntu-latest
       steps:
-        # - name: Checkout code
-        #   uses: actions/checkout@master
-  
         - name: Get latest release
           id: latest_release
           run: |
