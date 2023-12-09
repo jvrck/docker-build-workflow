@@ -13,8 +13,10 @@ jobs:
     secrets:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
         
-      # - name: Use latest release tag
-      #   run: echo "Latest release tag is ${{ steps.latest_release.outputs.latest_release_tag }}"
+  print-latest-release-tag:
+    runs-on: ubuntu-latest
+    name: Use latest release tag
+    run: echo "Latest release tag is ${{ steps.latest_release.outputs.latest_release_tag }}"
 
 
 #    ./.github/workflows/s/rw_get_latest_release.yml
