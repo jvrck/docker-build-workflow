@@ -16,7 +16,7 @@ jobs:
   
         - name: Set output
           id: output
-          run: echo "::set-output name=latest_release_tag::$LATEST_RELEASE_TAG"
+          run: echo "latest_release_tag=$LATEST_RELEASE_TAG" >> $GITHUB_OUTPUT
   
       outputs:
         latest_release_tag: ${{ steps.output.outputs.latest_release_tag }}
