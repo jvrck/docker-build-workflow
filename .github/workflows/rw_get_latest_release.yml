@@ -19,4 +19,4 @@ jobs:
           run: echo "latest_release_tag=jimka" >> $GITHUB_OUTPUT
   
       outputs:
-        latest_release_tag: ${{ steps.output.outputs.latest_release_tag }}
+        latest_release_tag: ${{ steps.latest_release.outputs.latest_release_tag }}
