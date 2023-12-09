@@ -1,11 +1,15 @@
+on:
+  push:
+    branches:
+      - '*test*'
+
 name: Use latest release tag
-on: [push]
 
 jobs:
   
   get-latest-release:
     name: Get latest release
-    uses: ./.github/workflows/rw_get_latest_release.yml@test-release
+    uses: ./.github/workflows/rw_get_latest_release.yml
     secrets:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
         
